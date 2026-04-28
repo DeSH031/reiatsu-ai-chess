@@ -56,7 +56,6 @@ export default function AuthShell() {
   const [submittingMode, setSubmittingMode] = useState<AuthMode | null>(null);
   const [signinEmail, setSigninEmail] = useState("");
   const [signinPassword, setSigninPassword] = useState("");
-  const [signupUsername, setSignupUsername] = useState("");
   const [signupEmail, setSignupEmail] = useState("");
   const [signupPassword, setSignupPassword] = useState("");
   const [authError, setAuthError] = useState<string | null>(null);
@@ -296,11 +295,6 @@ export default function AuthShell() {
       return;
     }
 
-    if (!signupUsername.trim()) {
-      setAuthError("Username is required.");
-      return;
-    }
-
     setSubmittingMode("signup");
     setAuthError(null);
     setAuthMessage(null);
@@ -311,17 +305,11 @@ export default function AuthShell() {
     } = await supabase.auth.signUp({
       email: signupEmail,
       password: signupPassword,
-      options: {
-        data: {
-          username: signupUsername.trim(),
-        },
-      },
     });
 
     if (error) {
       setAuthError(error.message);
     } else {
-      setSignupUsername("");
       setSignupPassword("");
       setAuthMessage(
         createdUser
@@ -483,18 +471,6 @@ export default function AuthShell() {
           Sign in
         </h2>
         <div className="mt-4 space-y-3">
-          <label className="block">
-            <span className="text-sm text-zinc-700 dark:text-zinc-200">
-              Username
-            </span>
-            <input
-              type="text"
-              value={signupUsername}
-              onChange={(event) => setSignupUsername(event.target.value)}
-              className="mt-1 w-full rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-100"
-              required
-            />
-          </label>
           <label className="block">
             <span className="text-sm text-zinc-700 dark:text-zinc-200">Email</span>
             <input
