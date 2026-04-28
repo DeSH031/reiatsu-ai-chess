@@ -78,6 +78,6 @@ The app can save match data and progress using Supabase.
 
 ## Links
 
-Live project: 
+Live project: https://reiatsu-ai-chess.vercel.app
 
 GitHub repository: https://github.com/DeSH031/reiatsu-ai-chess
