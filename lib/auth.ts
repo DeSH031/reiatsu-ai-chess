@@ -40,18 +40,13 @@ function getSupabaseClient(
   return client;
 }
 
-function getDefaultUsername(user: User | null): string {
+function getMetadataUsername(user: User | null): string {
   const metadataUsername =
     typeof user?.user_metadata?.username === "string"
       ? user.user_metadata.username.trim()
       : "";
 
-  if (metadataUsername) {
-    return metadataUsername;
-  }
-
-  const emailPrefix = user?.email?.split("@")[0]?.trim() ?? "";
-  return emailPrefix || "player";
+  return metadataUsername;
 }
 
 export async function getCurrentUser(
@@ -117,7 +112,15 @@ export async function updateProfileStats({
   const existingProfile = await getProfile(userId, supabaseClient);
   const currentUser = await getCurrentUser(supabaseClient);
   const username =
-    existingProfile?.username || getDefaultUsername(currentUser?.id === userId ? currentUser : null);
+    existingProfile?.username ??
+    getMetadataUsername(currentUser?.id === userId ? currentUser : null);
+
+  if (!username) {
+    console.error("Supabase updateProfileStats failed: missing profile username", {
+      userId,
+    });
+    return null;
+  }
 
   const nextGamesPlayed = (existingProfile?.games_played ?? 0) + 1;
   const currentReiatsu = existingProfile?.reiatsu ?? 0;
