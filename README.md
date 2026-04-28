@@ -3,14 +3,13 @@
 > “Chess apps train moves.  
 > Chess Coach trains decision-making.”
 
-Chess Coach is an interactive chess training web app inspired by the idea of **Reiatsu (霊圧)** from the anime *Bleach* — the concept of spiritual pressure that reflects a warrior’s presence, control, and growth. :contentReference[oaicite:0]{index=0}
+Chess Coach is an interactive chess training web app inspired by the idea of **Reiatsu (霊圧)** from the anime *Bleach* — the concept of spiritual pressure that reflects a warrior’s presence, control, and growth.
 
 Instead of treating improvement as just a number, this project turns chess progression into something that feels alive, visible, and personal.
 
 ## What is Reiatsu?
 
-In *Bleach*, Reiatsu represents the pressure created when spiritual power is released. Stronger warriors naturally emit stronger Reiatsu, and skilled fighters learn to control it with precision. :contentReference[oaicite:1]{index=1}
-
+In *Bleach*, Reiatsu represents the pressure created when spiritual power is released. Stronger warriors naturally emit stronger Reiatsu, and skilled fighters learn to control it with precision.
 Chess Coach adapts this idea into a chess improvement system.
 
 Here, Reiatsu is not meant to replace ELO or objectively measure chess strength. Instead, it acts as a motivational progression system that reflects:
